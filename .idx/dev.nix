@@ -16,6 +16,7 @@
     extensions = [
       "Dart-Code.flutter"
       "Dart-Code.dart-code"
+      "Nash.awesome-flutter-snippets"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -56,7 +57,7 @@
           manager = "flutter";
         };
         android = {
-          command = ["flutter" "run" "--machine" "-d" "android" "-d" "localhost:5555"];
+          command = ["flutter" "run" "--machine" "-d" "android" "-d" "emulator-5554"];
           manager = "flutter";
         };
       };
