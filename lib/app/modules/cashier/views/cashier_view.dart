@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:myapp/app/global/theme/my_color.dart';
 import 'package:myapp/app/global/theme/my_text.dart';
 
 import '../controllers/cashier_controller.dart';
@@ -32,8 +31,6 @@ class CashierView extends GetView<CashierController> {
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: ElevatedButton(
                 onPressed: () {},
-                style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(primaryVariant)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

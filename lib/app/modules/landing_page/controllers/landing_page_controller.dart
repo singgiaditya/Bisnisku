@@ -4,8 +4,8 @@ import 'package:myapp/app/modules/cashier/bindings/cashier_binding.dart';
 import 'package:myapp/app/modules/cashier/views/cashier_view.dart';
 import 'package:myapp/app/modules/home/bindings/home_binding.dart';
 import 'package:myapp/app/modules/home/views/home_view.dart';
-import 'package:myapp/app/modules/setting/bindings/setting_binding.dart';
-import 'package:myapp/app/modules/setting/views/setting_view.dart';
+import 'package:myapp/app/modules/store/bindings/store_binding.dart';
+import 'package:myapp/app/modules/store/views/store_view.dart';
 import 'package:myapp/app/routes/app_pages.dart';
 
 class LandingPageController extends GetxController {
@@ -48,8 +48,8 @@ class LandingPageController extends GetxController {
     if (settings.name == Routes.SETTING)
       return GetPageRoute(
         settings: settings,
-        page: () => SettingView(),
-        binding: SettingBinding(),
+        page: () => StoreView(),
+        binding: StoreBinding(),
       );
 
     return null;

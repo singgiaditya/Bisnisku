@@ -18,7 +18,7 @@ class LandingPageView extends GetView<LandingPageController> {
         items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home", ),
         BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cashier"),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
+        BottomNavigationBarItem(icon: Icon(Icons.store), label: "Store"),
       ],),),
       body: Navigator(
         key: Get.nestedKey(1),

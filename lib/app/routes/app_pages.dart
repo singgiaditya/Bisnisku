@@ -6,8 +6,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/landing_page/bindings/landing_page_binding.dart';
 import '../modules/landing_page/views/landing_page_view.dart';
-import '../modules/setting/bindings/setting_binding.dart';
-import '../modules/setting/views/setting_view.dart';
+import '../modules/product/bindings/product_binding.dart';
+import '../modules/product/views/product_view.dart';
+import '../modules/store/bindings/store_binding.dart';
+import '../modules/store/views/store_view.dart';
 
 part 'app_routes.dart';
 
@@ -28,14 +30,19 @@ class AppPages {
       binding: LandingPageBinding(),
     ),
     GetPage(
-      name: _Paths.SETTING,
-      page: () => const SettingView(),
-      binding: SettingBinding(),
+      name: _Paths.STORE,
+      page: () => const StoreView(),
+      binding: StoreBinding(),
     ),
     GetPage(
       name: _Paths.CASHIER,
       page: () => const CashierView(),
       binding: CashierBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT,
+      page: () => const ProductView(),
+      binding: ProductBinding(),
     ),
   ];
 }

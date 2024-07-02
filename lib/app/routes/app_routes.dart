@@ -5,14 +5,16 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const LANDING_PAGE = _Paths.LANDING_PAGE;
-  static const SETTING = _Paths.SETTING;
+  static const SETTING = _Paths.STORE;
   static const CASHIER = _Paths.CASHIER;
+  static const PRODUCT = _Paths.PRODUCT;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const LANDING_PAGE = '/landing-page';
-  static const SETTING = '/setting';
+  static const STORE = '/setting';
   static const CASHIER = '/cashier';
+  static const PRODUCT = '/product';
 }
