@@ -38,6 +38,11 @@ class AddProductView extends GetView<ProductController> {
                 height: 20,
               ),
               PhotoField(),
+              SizedBox(height: 40,),
+              SizedBox(
+                height: 60,
+                width: double.infinity,
+                child: ElevatedButton(onPressed: (){}, child: Text("Save Product", style: subtitleTextStyle,),))
             ],
           ),
         ),

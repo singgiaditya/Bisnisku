@@ -8,6 +8,7 @@ abstract class Routes {
   static const SETTING = _Paths.STORE;
   static const CASHIER = _Paths.CASHIER;
   static const PRODUCT = _Paths.PRODUCT;
+  static const MANAGESTORE = _Paths.MANAGESTORE;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const STORE = '/setting';
   static const CASHIER = '/cashier';
   static const PRODUCT = '/product';
+  static const MANAGESTORE = '/manage-store';
 }

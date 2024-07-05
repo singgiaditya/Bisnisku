@@ -21,7 +21,7 @@ class StoreView extends GetView<StoreController> {
           padding: EdgeInsets.symmetric(horizontal: 14),
           child: Column(
             children: [
-              MenuListTile(label: "Store", onTap: (){}),
+              MenuListTile(label: "Store", onTap: controller.manageStoreHandler),
               MenuListTile(label: "Product", onTap: controller.productHandler),
               MenuListTile(label: "Financial", onTap: (){}),
               MenuListTile(label: "Backup Data", onTap: (){}),

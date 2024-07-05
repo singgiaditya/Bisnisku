@@ -46,7 +46,8 @@ class ProductView extends GetView<ProductController> {
                   return MenuCard();
                  },
                 ),
-                SizedBox(height: 80,)
+                SizedBox(height: 80,),
+                
               ],
             ),
           ),

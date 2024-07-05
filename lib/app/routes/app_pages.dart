@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:myapp/app/modules/store/bindings/manage_store_binding.dart';
+import 'package:myapp/app/modules/store/views/manage_store_view.dart';
 
 import '../modules/cashier/bindings/cashier_binding.dart';
 import '../modules/cashier/views/cashier_view.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.PRODUCT,
       page: () => const ProductView(),
       binding: ProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.MANAGESTORE,
+      page: () => const ManageStoreView(),
+      binding: ManageStoreBinding(),
     ),
   ];
 }
