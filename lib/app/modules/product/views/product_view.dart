@@ -11,9 +11,13 @@ class ProductView extends GetView<ProductController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        controller.addProductView();
-      }, child: Icon(Icons.add), shape: CircleBorder(),),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            controller.addProductView();
+          },
+          child: Icon(Icons.add),
+          shape: CircleBorder(),
+        ),
         appBar: AppBar(
           title: Text('Product List', style: titleTextStyle),
           centerTitle: true,
@@ -27,27 +31,40 @@ class ProductView extends GetView<ProductController> {
                   height: 24,
                 ),
                 SizedBox(
-                    height: 35,
-                    child: TextField(
-                      style: normalTextStyle,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(24)),
-                          hintText: "Find menu",
-                          contentPadding: EdgeInsets.only(top: 12), 
-                          prefixIcon: Icon(Icons.search, size: 18,)),
-                    ),
+                  height: 35,
+                  child: TextField(
+                    style: normalTextStyle,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(24)),
+                        hintText: "Find menu",
+                        contentPadding: EdgeInsets.only(top: 12),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: 18,
+                        )),
                   ),
-                SizedBox(height: 14,),
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 8,
-                  itemBuilder: (BuildContext context, int index) {
-                  return MenuCard();
-                 },
                 ),
-                SizedBox(height: 80,),
-                
+                SizedBox(
+                  height: 14,
+                ),
+                Obx(() {
+                  return ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.menuList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return MenuCard(
+                        productName: controller.menuList[index]!.name,
+                        productPrice:
+                            controller.menuList[index]!.price.toString(),
+                      );
+                    },
+                  );
+                }),
+                SizedBox(
+                  height: 80,
+                ),
               ],
             ),
           ),
@@ -56,8 +73,12 @@ class ProductView extends GetView<ProductController> {
 }
 
 class MenuCard extends StatelessWidget {
+  final String productName;
+  final String productPrice;
   const MenuCard({
     super.key,
+    required this.productName,
+    required this.productPrice,
   });
 
   @override
@@ -69,11 +90,11 @@ class MenuCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Cappucino",
+              "$productName",
               style: subtitleTextStyle.copyWith(color: primary),
             ),
             Text(
-              "Rp. 25.000",
+              "Rp. $productPrice",
               style: normalTextStyle,
             ),
           ],

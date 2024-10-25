@@ -1,6 +1,7 @@
 import 'package:floor/floor.dart';
-import 'package:myapp/app/data/models/menu.dart';
-import 'package:myapp/app/data/models/order.dart';
+import 'package:myapp/app/data/entities/menu.dart';
+import 'package:myapp/app/data/entities/order.dart';
+
 
 @Entity(tableName: "order_detail")
 class OrderDetail {

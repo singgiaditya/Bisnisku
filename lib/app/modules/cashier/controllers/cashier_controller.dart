@@ -1,11 +1,23 @@
 import 'package:get/get.dart';
+import 'package:myapp/app/data/dao/menu_dao.dart';
+import 'package:myapp/app/data/database.dart';
+import 'package:myapp/app/data/entities/menu.dart';
+import 'package:myapp/app/injection_container.dart';
 
 class CashierController extends GetxController {
-  //TODO: Implement CashierController
+  var menuList = <Menu?>[].obs;
 
-  final count = 0.obs;
+  void getMenu() {
+    final AppDatabase database = sl();
+    final MenuDao menuDao = database.menuDao;
+    menuDao.getAllMenu().then((value) {
+      menuList.value = value;
+    });
+  }
+
   @override
   void onInit() {
+    getMenu();
     super.onInit();
   }
 
@@ -18,6 +30,4 @@ class CashierController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

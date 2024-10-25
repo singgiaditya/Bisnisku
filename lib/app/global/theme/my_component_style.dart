@@ -12,7 +12,7 @@ AppBarTheme myAppBarStyle() => const AppBarTheme(
 ElevatedButtonThemeData myElevatedButtonThemeStyle() => ElevatedButtonThemeData(
   style: ButtonStyle(
    shape:  WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-   backgroundColor: WidgetStatePropertyAll(primaryVariant)
+   backgroundColor: const WidgetStatePropertyAll(primaryVariant)
   )
 );
 

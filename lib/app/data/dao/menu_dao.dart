@@ -9,10 +9,13 @@ abstract class MenuDao{
   @delete
   Future<void> deleteMenu(Menu menu);
 
+  @update
+  Future<void> updateMenu(Menu menu);
+
   @Query('SELECT * FROM menu')
-  Future<List<Menu>> getMenus();
+  Future<List<Menu?>> getAllMenu();
 
   @Query('SELECT * FROM menu WHERE id = :id')
-  Future<Menu> getMenuById(int id);
+  Future<Menu?> getMenuById(int id);
 
 }
