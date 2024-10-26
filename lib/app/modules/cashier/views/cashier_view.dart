@@ -114,9 +114,7 @@ class MenuCard extends StatelessWidget {
                     height: 95,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: NetworkImage(
-                                "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSHOX-6JEup_iIkzcdJjTotXqUFvfxUz_d3RJYWlEJNRq76yMxvNdcG05od2z-tb5hiLySqHbvzrlXKoFy2MJfPouQN1g6tQxILjKL74wwFWPMVyma89gKa&usqp=CAE"),
-                            fit: BoxFit.cover),
+                            image: MemoryImage(data.image!), fit: BoxFit.cover),
                         borderRadius: BorderRadius.circular(20)),
                   )
                 : Container(
