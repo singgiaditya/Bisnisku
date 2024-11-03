@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/app/data/entities/menu.dart';
 import 'package:myapp/app/global/theme/my_text.dart';
+import 'package:myapp/app/modules/cashier/views/order_view.dart';
 
 import '../controllers/cashier_controller.dart';
 
@@ -31,33 +32,42 @@ class CashierView extends GetView<CashierController> {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: Container(
-            height: 60,
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: ElevatedButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.shopping_cart),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          "0 Items",
-                          style: subtitleTextStyle,
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "Total: Rp.120.000",
-                      style: subtitleTextStyle,
-                    )
-                  ],
-                ))),
+        floatingActionButton: Obx(() {
+          return Container(
+              height: 60,
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => const OrderView());
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.shopping_cart),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "${controller.totalItem.value} Items",
+                            style: subtitleTextStyle,
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "Total: ${CurrencyTextInputFormatter.currency(
+                          minValue: 0,
+                          decimalDigits: 0,
+                          locale: "ID",
+                          symbol: "Rp. ",
+                        ).formatDouble(controller.totalPrice.value)}",
+                        style: subtitleTextStyle,
+                      )
+                    ],
+                  )));
+        }),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 24),
@@ -78,6 +88,7 @@ class CashierView extends GetView<CashierController> {
                           mainAxisSpacing: 8),
                       itemBuilder: (context, index) {
                         return MenuCard(
+                          onAdd: controller.addItem,
                           data: controller.menuList[index]!,
                         );
                       },
@@ -96,9 +107,11 @@ class CashierView extends GetView<CashierController> {
 
 class MenuCard extends StatelessWidget {
   final Menu data;
+  final Function onAdd;
   const MenuCard({
     super.key,
     required this.data,
+    required this.onAdd,
   });
 
   @override
@@ -169,7 +182,9 @@ class MenuCard extends StatelessWidget {
                                     RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(12)))),
-                            onPressed: () {},
+                            onPressed: () {
+                              onAdd(data);
+                            },
                             icon: Icon(
                               Icons.add,
                               size: 16,

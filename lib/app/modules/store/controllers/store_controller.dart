@@ -2,12 +2,15 @@ import 'package:get/get.dart';
 import 'package:myapp/app/routes/app_pages.dart';
 
 class StoreController extends GetxController {
-
-  void manageStoreHandler(){
+  void manageStoreHandler() {
     Get.toNamed(Routes.MANAGESTORE);
   }
 
-  void productHandler(){
+  void productHandler() {
     Get.toNamed(Routes.PRODUCT);
+  }
+
+  void paymentMethodHandler() {
+    Get.toNamed(Routes.PAYMENT_METHOD);
   }
 }

@@ -12,10 +12,10 @@ abstract class OrderDetailDao{
   @update
   Future<void> updateMenu(OrderDetail orderDetail);
 
-  @Query('SELECT * FROM order_detial')
+  @Query('SELECT * FROM order_detail')
   Future<List<OrderDetail?>> getMenus();
 
-  @Query('SELECT * FROM order_detial WHERE id = :id')
+  @Query('SELECT * FROM order_detail WHERE id = :id')
   Future<OrderDetail?> getMenuById(int id);
 
 }

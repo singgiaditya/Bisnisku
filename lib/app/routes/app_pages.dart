@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:myapp/app/modules/store/bindings/manage_store_binding.dart';
-import 'package:myapp/app/modules/store/views/manage_store_view.dart';
 
 import '../modules/cashier/bindings/cashier_binding.dart';
 import '../modules/cashier/views/cashier_view.dart';
@@ -8,9 +6,13 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/landing_page/bindings/landing_page_binding.dart';
 import '../modules/landing_page/views/landing_page_view.dart';
+import '../modules/payment_method/bindings/payment_method_binding.dart';
+import '../modules/payment_method/views/payment_method_view.dart';
 import '../modules/product/bindings/product_binding.dart';
 import '../modules/product/views/product_view.dart';
+import '../modules/store/bindings/manage_store_binding.dart';
 import '../modules/store/bindings/store_binding.dart';
+import '../modules/store/views/manage_store_view.dart';
 import '../modules/store/views/store_view.dart';
 
 part 'app_routes.dart';
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.MANAGESTORE,
       page: () => const ManageStoreView(),
       binding: ManageStoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT_METHOD,
+      page: () => const PaymentMethodView(),
+      binding: PaymentMethodBinding(),
     ),
   ];
 }

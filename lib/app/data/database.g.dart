@@ -80,6 +80,8 @@ class _$AppDatabase extends AppDatabase {
 
   OrderDetailDao? _orderDetailDaoInstance;
 
+  PaymentMethodDao? _paymentMethodDaoInstance;
+
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
@@ -106,9 +108,11 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `financial` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT NOT NULL, `description` TEXT NOT NULL, `amount` REAL NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `order` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `customer` TEXT NOT NULL, `buy_at` INTEGER NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `order` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `customer` TEXT NOT NULL, `buy_at` INTEGER NOT NULL, `payment_method_id` INTEGER NOT NULL)');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `order_detail` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `order_id` INTEGER NOT NULL, `menu_id` INTEGER NOT NULL, `quantity` INTEGER NOT NULL)');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `payment_method` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `payment_method` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -135,6 +139,12 @@ class _$AppDatabase extends AppDatabase {
   OrderDetailDao get orderDetailDao {
     return _orderDetailDaoInstance ??=
         _$OrderDetailDao(database, changeListener);
+  }
+
+  @override
+  PaymentMethodDao get paymentMethodDao {
+    return _paymentMethodDaoInstance ??=
+        _$PaymentMethodDao(database, changeListener);
   }
 }
 
@@ -323,7 +333,8 @@ class _$OrderDao extends OrderDao {
             (Order item) => <String, Object?>{
                   'id': item.id,
                   'customer': item.customer,
-                  'buy_at': _dateTimeConverter.encode(item.buyAt)
+                  'buy_at': _dateTimeConverter.encode(item.buyAt),
+                  'payment_method_id': item.paymentMethodId
                 }),
         _orderUpdateAdapter = UpdateAdapter(
             database,
@@ -332,7 +343,8 @@ class _$OrderDao extends OrderDao {
             (Order item) => <String, Object?>{
                   'id': item.id,
                   'customer': item.customer,
-                  'buy_at': _dateTimeConverter.encode(item.buyAt)
+                  'buy_at': _dateTimeConverter.encode(item.buyAt),
+                  'payment_method_id': item.paymentMethodId
                 }),
         _orderDeletionAdapter = DeletionAdapter(
             database,
@@ -341,7 +353,8 @@ class _$OrderDao extends OrderDao {
             (Order item) => <String, Object?>{
                   'id': item.id,
                   'customer': item.customer,
-                  'buy_at': _dateTimeConverter.encode(item.buyAt)
+                  'buy_at': _dateTimeConverter.encode(item.buyAt),
+                  'payment_method_id': item.paymentMethodId
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -362,7 +375,8 @@ class _$OrderDao extends OrderDao {
         mapper: (Map<String, Object?> row) => Order(
             id: row['id'] as int,
             customer: row['customer'] as String,
-            buyAt: _dateTimeConverter.decode(row['buy_at'] as int)));
+            buyAt: _dateTimeConverter.decode(row['buy_at'] as int),
+            paymentMethodId: row['payment_method_id'] as int));
   }
 
   @override
@@ -371,7 +385,8 @@ class _$OrderDao extends OrderDao {
         mapper: (Map<String, Object?> row) => Order(
             id: row['id'] as int,
             customer: row['customer'] as String,
-            buyAt: _dateTimeConverter.decode(row['buy_at'] as int)),
+            buyAt: _dateTimeConverter.decode(row['buy_at'] as int),
+            paymentMethodId: row['payment_method_id'] as int),
         arguments: [id]);
   }
 
@@ -440,7 +455,7 @@ class _$OrderDetailDao extends OrderDetailDao {
 
   @override
   Future<List<OrderDetail?>> getMenus() async {
-    return _queryAdapter.queryList('SELECT * FROM order_detial',
+    return _queryAdapter.queryList('SELECT * FROM order_detail',
         mapper: (Map<String, Object?> row) => OrderDetail(
             id: row['id'] as int,
             orderId: row['order_id'] as int,
@@ -450,7 +465,7 @@ class _$OrderDetailDao extends OrderDetailDao {
 
   @override
   Future<OrderDetail?> getMenuById(int id) async {
-    return _queryAdapter.query('SELECT * FROM order_detial WHERE id = ?1',
+    return _queryAdapter.query('SELECT * FROM order_detail WHERE id = ?1',
         mapper: (Map<String, Object?> row) => OrderDetail(
             id: row['id'] as int,
             orderId: row['order_id'] as int,
@@ -474,6 +489,82 @@ class _$OrderDetailDao extends OrderDetailDao {
   @override
   Future<void> deleteMenu(OrderDetail orderDetail) async {
     await _orderDetailDeletionAdapter.delete(orderDetail);
+  }
+}
+
+class _$PaymentMethodDao extends PaymentMethodDao {
+  _$PaymentMethodDao(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database),
+        _paymentMethodInsertionAdapter = InsertionAdapter(
+            database,
+            'payment_method',
+            (PaymentMethod item) => <String, Object?>{
+                  'id': item.id,
+                  'payment_method': item.paymentMethod
+                }),
+        _paymentMethodUpdateAdapter = UpdateAdapter(
+            database,
+            'payment_method',
+            ['id'],
+            (PaymentMethod item) => <String, Object?>{
+                  'id': item.id,
+                  'payment_method': item.paymentMethod
+                }),
+        _paymentMethodDeletionAdapter = DeletionAdapter(
+            database,
+            'payment_method',
+            ['id'],
+            (PaymentMethod item) => <String, Object?>{
+                  'id': item.id,
+                  'payment_method': item.paymentMethod
+                });
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<PaymentMethod> _paymentMethodInsertionAdapter;
+
+  final UpdateAdapter<PaymentMethod> _paymentMethodUpdateAdapter;
+
+  final DeletionAdapter<PaymentMethod> _paymentMethodDeletionAdapter;
+
+  @override
+  Future<List<PaymentMethod?>> getAllPaymentMethod() async {
+    return _queryAdapter.queryList('SELECT * FROM payment_method',
+        mapper: (Map<String, Object?> row) => PaymentMethod(
+            id: row['id'] as int,
+            paymentMethod: row['payment_method'] as String));
+  }
+
+  @override
+  Future<PaymentMethod?> getPaymentMethodById(int id) async {
+    return _queryAdapter.query('SELECT * FROM payment_method WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => PaymentMethod(
+            id: row['id'] as int,
+            paymentMethod: row['payment_method'] as String),
+        arguments: [id]);
+  }
+
+  @override
+  Future<void> insertPaymentMethod(PaymentMethod paymentMethod) async {
+    await _paymentMethodInsertionAdapter.insert(
+        paymentMethod, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> updatePaymentMethod(PaymentMethod paymentMethod) async {
+    await _paymentMethodUpdateAdapter.update(
+        paymentMethod, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> deletePaymentMethod(PaymentMethod paymentMethod) async {
+    await _paymentMethodDeletionAdapter.delete(paymentMethod);
   }
 }
 

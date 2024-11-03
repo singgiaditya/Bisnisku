@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:myapp/app/global/theme/my_text.dart';
+import 'package:myapp/app/global/widgets/custom_field.dart';
+import 'package:myapp/app/global/widgets/number_field.dart';
 import 'package:myapp/app/modules/product/controllers/product_controller.dart';
 
 class AddProductView extends GetView<ProductController> {
@@ -28,7 +29,7 @@ class AddProductView extends GetView<ProductController> {
               SizedBox(
                 height: 24,
               ),
-              customField(
+              CustomField(
                 label: "Name Product",
                 hintText: "Cappucino",
                 controller: controller.nameController,
@@ -125,87 +126,6 @@ class AddProductView extends GetView<ProductController> {
                   ))),
         ],
       ),
-    );
-  }
-}
-
-class customField extends StatelessWidget {
-  final String label;
-  final String hintText;
-  final TextEditingController controller;
-  const customField(
-      {super.key,
-      required this.label,
-      required this.hintText,
-      required this.controller});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: subtitleTextStyle,
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        TextField(
-          controller: controller,
-          style: normalTextStyle,
-          keyboardType: TextInputType.text,
-          decoration: InputDecoration(
-            hintText: hintText,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-            filled: true,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide.none),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class NumberField extends StatelessWidget {
-  final String label;
-  final String hintText;
-  final TextInputFormatter formatter;
-  const NumberField({
-    super.key,
-    required this.label,
-    required this.hintText,
-    required this.formatter,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: subtitleTextStyle,
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        TextField(
-          inputFormatters: [formatter],
-          style: normalTextStyle,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            hintText: hintText,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-            filled: true,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide.none),
-          ),
-        ),
-      ],
     );
   }
 }
