@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:myapp/app/global/theme/my_text.dart';
-import 'package:myapp/app/global/widgets/custom_field.dart';
-import 'package:myapp/app/modules/payment_method/controllers/payment_method_controller.dart';
+import 'package:bisnisku/app/global/theme/my_text.dart';
+import 'package:bisnisku/app/global/widgets/custom_field.dart';
+import 'package:bisnisku/app/modules/payment_method/controllers/payment_method_controller.dart';
 
 class PaymentMethodFormView extends GetView<PaymentMethodController> {
   const PaymentMethodFormView({super.key});
@@ -39,7 +39,9 @@ class PaymentMethodFormView extends GetView<PaymentMethodController> {
                     height: 50,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         controller.insertPaymentMethod(nameController.text);
+                      },
                       child: Text(
                         "Save Product",
                         style: subtitleTextStyle,

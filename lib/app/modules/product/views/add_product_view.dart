@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:myapp/app/global/theme/my_text.dart';
-import 'package:myapp/app/global/widgets/custom_field.dart';
-import 'package:myapp/app/global/widgets/number_field.dart';
-import 'package:myapp/app/modules/product/controllers/product_controller.dart';
+import 'package:bisnisku/app/global/theme/my_text.dart';
+import 'package:bisnisku/app/global/widgets/custom_field.dart';
+import 'package:bisnisku/app/global/widgets/number_field.dart';
+import 'package:bisnisku/app/modules/product/controllers/product_controller.dart';
 
 class AddProductView extends GetView<ProductController> {
   const AddProductView({super.key});

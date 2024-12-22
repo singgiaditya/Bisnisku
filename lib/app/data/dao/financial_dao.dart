@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:myapp/app/data/entities/financial.dart';
+import 'package:bisnisku/app/data/entities/financial.dart';
 
 @dao
 abstract class FinancialDao{

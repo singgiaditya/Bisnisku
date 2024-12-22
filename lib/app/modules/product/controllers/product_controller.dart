@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myapp/app/data/dao/menu_dao.dart';
-import 'package:myapp/app/data/database.dart';
-import 'package:myapp/app/data/entities/menu.dart';
-import 'package:myapp/app/global/services/image_picker_service.dart';
-import 'package:myapp/app/injection_container.dart';
-import 'package:myapp/app/modules/product/views/add_product_view.dart';
+import 'package:bisnisku/app/data/dao/menu_dao.dart';
+import 'package:bisnisku/app/data/database.dart';
+import 'package:bisnisku/app/data/entities/menu.dart';
+import 'package:bisnisku/app/global/services/image_picker_service.dart';
+import 'package:bisnisku/app/injection_container.dart';
+import 'package:bisnisku/app/modules/product/views/add_product_view.dart';
 
 class ProductController extends GetxController {
   final TextEditingController nameController = TextEditingController();

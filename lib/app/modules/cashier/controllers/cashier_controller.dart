@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:myapp/app/data/dao/menu_dao.dart';
-import 'package:myapp/app/data/database.dart';
-import 'package:myapp/app/data/entities/menu.dart';
-import 'package:myapp/app/data/models/cart_model.dart';
-import 'package:myapp/app/injection_container.dart';
+import 'package:bisnisku/app/data/dao/menu_dao.dart';
+import 'package:bisnisku/app/data/database.dart';
+import 'package:bisnisku/app/data/entities/menu.dart';
+import 'package:bisnisku/app/data/models/cart_model.dart';
+import 'package:bisnisku/app/injection_container.dart';
 
 class CashierController extends GetxController {
   var menuList = <Menu?>[].obs;

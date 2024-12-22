@@ -1,7 +1,7 @@
-name: myapp
-version: 1.0.0+1
+name: bisnisku
+version: 1.0.0
 publish_to: none
-description: A new Flutter project.
+description: A POS App for small coffee shop.
 environment: 
   sdk: '>=3.4.0 <4.0.0'
 

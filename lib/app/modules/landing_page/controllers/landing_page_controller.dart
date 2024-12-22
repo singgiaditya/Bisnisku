@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myapp/app/modules/cashier/bindings/cashier_binding.dart';
-import 'package:myapp/app/modules/cashier/views/cashier_view.dart';
-import 'package:myapp/app/modules/home/bindings/home_binding.dart';
-import 'package:myapp/app/modules/home/views/home_view.dart';
-import 'package:myapp/app/modules/store/bindings/store_binding.dart';
-import 'package:myapp/app/modules/store/views/store_view.dart';
-import 'package:myapp/app/routes/app_pages.dart';
+import 'package:bisnisku/app/modules/cashier/bindings/cashier_binding.dart';
+import 'package:bisnisku/app/modules/cashier/views/cashier_view.dart';
+import 'package:bisnisku/app/modules/home/bindings/home_binding.dart';
+import 'package:bisnisku/app/modules/home/views/home_view.dart';
+import 'package:bisnisku/app/modules/store/bindings/store_binding.dart';
+import 'package:bisnisku/app/modules/store/views/store_view.dart';
+import 'package:bisnisku/app/routes/app_pages.dart';
 
 class LandingPageController extends GetxController {
   //TODO: Implement LandingPageController
 
   final index = 0.obs;
 
-  final pages = <String> [Routes.HOME, Routes.CASHIER, Routes.SETTING ]; 
+  final pages = <String>[Routes.HOME, Routes.CASHIER, Routes.SETTING];
 
   @override
   void onInit() {
@@ -55,10 +55,8 @@ class LandingPageController extends GetxController {
     return null;
   }
 
-
-  void changePage(int selectedIndex){
+  void changePage(int selectedIndex) {
     index.value = selectedIndex;
     Get.keys[1]?.currentState!.pushReplacementNamed(pages[index.value]);
   }
-
 }

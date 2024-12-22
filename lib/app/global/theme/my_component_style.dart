@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/app/global/theme/my_color.dart';
+import 'package:bisnisku/app/global/theme/my_color.dart';
 
 AppBarTheme myAppBarStyle() => const AppBarTheme(
   centerTitle: true,

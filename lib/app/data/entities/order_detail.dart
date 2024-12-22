@@ -1,6 +1,6 @@
 import 'package:floor/floor.dart';
-import 'package:myapp/app/data/entities/menu.dart';
-import 'package:myapp/app/data/entities/order.dart';
+import 'package:bisnisku/app/data/entities/menu.dart';
+import 'package:bisnisku/app/data/entities/order.dart';
 
 
 @Entity(tableName: "order_detail")

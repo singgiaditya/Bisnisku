@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:myapp/app/data/entities/payment_method.dart';
+import 'package:bisnisku/app/data/entities/payment_method.dart';
 
 @Entity(tableName: "order")
 class Order {

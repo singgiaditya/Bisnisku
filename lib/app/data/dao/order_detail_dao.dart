@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:myapp/app/data/entities/order_detail.dart';
+import 'package:bisnisku/app/data/entities/order_detail.dart';
 
 @dao
 abstract class OrderDetailDao{

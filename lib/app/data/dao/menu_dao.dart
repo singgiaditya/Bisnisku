@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:myapp/app/data/entities/menu.dart';
+import 'package:bisnisku/app/data/entities/menu.dart';
 
 @dao
 abstract class MenuDao{

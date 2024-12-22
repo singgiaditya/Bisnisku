@@ -112,7 +112,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `order_detail` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `order_id` INTEGER NOT NULL, `menu_id` INTEGER NOT NULL, `quantity` INTEGER NOT NULL)');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `payment_method` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `payment_method` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `payment_method` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `payment_method` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -537,7 +537,7 @@ class _$PaymentMethodDao extends PaymentMethodDao {
   Future<List<PaymentMethod?>> getAllPaymentMethod() async {
     return _queryAdapter.queryList('SELECT * FROM payment_method',
         mapper: (Map<String, Object?> row) => PaymentMethod(
-            id: row['id'] as int,
+            id: row['id'] as int?,
             paymentMethod: row['payment_method'] as String));
   }
 
@@ -545,7 +545,7 @@ class _$PaymentMethodDao extends PaymentMethodDao {
   Future<PaymentMethod?> getPaymentMethodById(int id) async {
     return _queryAdapter.query('SELECT * FROM payment_method WHERE id = ?1',
         mapper: (Map<String, Object?> row) => PaymentMethod(
-            id: row['id'] as int,
+            id: row['id'] as int?,
             paymentMethod: row['payment_method'] as String),
         arguments: [id]);
   }

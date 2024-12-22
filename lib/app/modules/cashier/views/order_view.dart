@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:myapp/app/global/theme/my_text.dart';
-import 'package:myapp/app/modules/cashier/controllers/cashier_controller.dart';
+import 'package:bisnisku/app/global/theme/my_text.dart';
+import 'package:bisnisku/app/modules/cashier/controllers/cashier_controller.dart';
 
 class OrderView extends GetView<CashierController> {
   const OrderView({Key? key}) : super(key: key);

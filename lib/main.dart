@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myapp/app/global/theme/my_theme.dart';
-import 'package:myapp/app/injection_container.dart';
+import 'package:bisnisku/app/global/theme/my_theme.dart';
+import 'package:bisnisku/app/injection_container.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -11,7 +11,7 @@ Future<void> main() async {
   await sl.allReady();
   runApp(
     GetMaterialApp(
-      title: "Cafeku",
+      title: "Bisnisku",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       themeMode: ThemeMode.dark,

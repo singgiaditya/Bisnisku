@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:myapp/app/global/theme/my_text.dart';
-import 'package:myapp/app/modules/store/controllers/manage_store_controller.dart';
+import 'package:bisnisku/app/global/theme/my_text.dart';
+import 'package:bisnisku/app/modules/store/controllers/manage_store_controller.dart';
 
 class ManageStoreView extends GetView<ManageStoreController> {
   const ManageStoreView({super.key});

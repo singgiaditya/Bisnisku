@@ -2,9 +2,9 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:myapp/app/data/entities/menu.dart';
-import 'package:myapp/app/global/theme/my_text.dart';
-import 'package:myapp/app/modules/cashier/views/order_view.dart';
+import 'package:bisnisku/app/data/entities/menu.dart';
+import 'package:bisnisku/app/global/theme/my_text.dart';
+import 'package:bisnisku/app/modules/cashier/views/order_view.dart';
 
 import '../controllers/cashier_controller.dart';
 

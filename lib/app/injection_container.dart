@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:myapp/app/data/database.dart';
+import 'package:bisnisku/app/data/database.dart';
 
 final sl = GetIt.instance;
 
